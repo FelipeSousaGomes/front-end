@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class AccountService {
   redirectUrl: string | null = null;
-  apiUrl = 'http://localhost:8080/auth';
+  apiUrl = 'https://gotypesportcenter.up.railway.app/auth';
   private currentUserSource = new BehaviorSubject<User | null >(null);
   currentUser$ = this.currentUserSource.asObservable();
   
