@@ -11,7 +11,7 @@ import { Product } from '../shared/models/product';
 export class StoreService {
 
   constructor(private http: HttpClient) { }
-  public apiUrl = 'http://localhost:8080/api/products';
+  public apiUrl = 'https://gotypesportcenter.up.railway.app/api/products';
 
   getProducts(brandId?: number, typeId?: number, url?: string): Observable<ProductData>{
     // Construct the base URL
