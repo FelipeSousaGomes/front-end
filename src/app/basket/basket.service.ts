@@ -8,7 +8,7 @@ import { Product } from '../shared/models/product';
   providedIn: 'root'
 })
 export class BasketService {
-  apiUrl = 'http://localhost:8080/api/baskets';
+  apiUrl = 'https://gotypesportcenter.up.railway.app/api/baskets';
   private basketSource = new BehaviorSubject<Basket | null>(null);
   basketSource$ = this.basketSource.asObservable();
   private basketTotalSource = new BehaviorSubject<BasketTotals>({
