@@ -1,0 +1,76 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!-- Brand/logo -->
+  <a class="navbar-brand" href="#">
+      <img src="/assets/images/logo.png" alt="Sports Center" width="90">
+      Sports Center
+  </a>
+
+  <!-- Botão de alternância para telas pequenas -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Conteúdo recolhível -->
+  <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+          <!-- Link para a página inicial -->
+          <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              <a class="nav-link" routerLink="/">
+                  <i class="fa fa-home"></i> Início
+              </a>
+          </li>
+
+          <!-- Link para a loja -->
+          <li class="nav-item" routerLinkActive="active">
+              <a class="nav-link" routerLink="/store">
+                  <i class="fa fa-th-list"></i> Loja
+              </a>
+          </li>
+
+          <!-- Link para o carrinho com distintivo mostrando a contagem de itens -->
+          <li class="nav-item" routerLinkActive="active">
+              <a class="nav-link" routerLink="/basket">
+                  <i class="fa fa-shopping-cart"></i>
+                  <span class="cart-badge" *ngIf="(basketService.basketSource$ | async) as basket">
+                      {{ getItemsCount(basket.items) }}
+                  </span>
+              </a>
+          </li>
+
+          <!-- Links para usuários não autenticados e autenticados -->
+          <ng-container *ngIf="(currentUser$ | async) === null">
+              <!-- Link para login -->
+              <li class="nav-item" routerLinkActive="active">
+                  <a class="nav-link" routerLink="/account/login">
+                      <i class="fa fa-sign-in"></i> Entrar
+                  </a>
+              </li>
+
+              <!-- Link para registro -->
+              <li class="nav-item" routerLinkActive="active">
+                  <a class="nav-link" routerLink="/account/register">
+                      <i class="fa fa-user"></i> Registrar
+                  </a>
+              </li>
+          </ng-container>
+
+          <!-- Links para usuários autenticados -->
+          <ng-container *ngIf="(currentUser$ | async) as user">
+              <!-- Link para perfil com nome do usuário -->
+              <li class="nav-item" routerLinkActive="active">
+                  <a class="nav-link" routerLink="/account/profile">
+                      Bem-vindo, {{user.username}}
+                  </a>
+              </li>
+
+              <!-- Link para logout -->
+              <li class="nav-item" routerLinkActive="active">
+                  <a class="nav-link" (click)="logout()">
+                      <i class="fa fa-sign-out"></i> Sair
+                  </a>
+              </li>
+          </ng-container>
+      </ul>
+  </div>
+</nav>

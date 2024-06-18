@@ -1,0 +1,43 @@
+<div class="container mt-4" *ngIf="product">
+  <div class="row">
+    <div class="col-md-6">
+      <!-- Imagem do Produto -->
+      <div class="product-image-container">
+        <img [src]="'assets/images/products/' + extractImageName()" [alt]="product.name" class="img-fluid product-image" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <!-- Detalhes do Produto -->
+      <h2 class="product-title">{{ product.name }}</h2>
+      <p class="product-description text-muted">{{ product.description }}</p>
+      <div class="product-info">
+        <div class="product-info-item">
+          <strong>Preço:</strong>
+          <span class="product-price">{{ product.price | currency: 'BRL' }}</span>
+        </div>
+        <div class="product-info-item">
+          <strong>Marca:</strong>
+          <span class="product-brand">{{ product.productBrand }}</span>
+        </div>
+        <div class="product-info-item">
+          <strong>Tipo:</strong>
+          <span class="product-type">{{ product.productType }}</span>
+        </div>
+        <!-- Controle de Quantidade -->
+        <div class="quantity-control">
+          <strong>Quantidade:</strong>
+          <button class="quantity-button" (click)="decrementQuantity()">
+            <i class="fa fa-minus"></i>
+          </button>
+          <span class="quantity">{{ quantity }}</span>
+          <button class="quantity-button" (click)="incrementQuantity()">
+            <i class="fa fa-plus"></i>
+          </button>
+        </div>
+      </div>
+      <!-- Botão Adicionar ao Carrinho (se aplicável) -->
+      <button class="btn btn-primary add-to-cart-button" (click)="addToCart()">Adicionar ao Carrinho</button>
+      <button class="btn btn-secondary go-back-button" routerLink="/store">Voltar para a Loja</button>
+    </div>
+  </div>
+</div>

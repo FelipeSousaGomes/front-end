@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <!-- Assistente de Checkout -->
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link" [class.active]="currentStep === 'address'" (click)="setCurrentStep('address')">Endereço</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [class.active]="currentStep === 'shipment'" (click)="setCurrentStep('shipment')">Entrega</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [class.active]="currentStep === 'review'" (click)="setCurrentStep('review')">Revisão</a>
+        </li>
+      </ul>
+
+      <!-- Seção de Endereço -->
+      <div *ngIf="currentStep === 'address'">
+        <app-address></app-address>
+      </div>
+
+      <!-- Seção de Entrega -->
+      <div *ngIf="currentStep === 'shipment'">
+        <app-shipment></app-shipment>
+      </div>
+
+      <!-- Seção de Revisão -->
+      <div *ngIf="currentStep === 'review'">
+        <app-review></app-review>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <!-- Resumo do Pedido -->
+      <app-order-summary></app-order-summary>
+    </div>
+  </div>
+</div>

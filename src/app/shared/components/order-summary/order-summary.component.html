@@ -1,0 +1,28 @@
+<div class="container mt-4" *ngIf="(basketService.basketTotalSource$ | async) as basketTotal">
+  <!-- Adicionando um título para a página -->
+  <h1>Carrinho de Compras</h1>
+
+  <!-- Resumo do Pedido -->
+  <h3>Resumo do Pedido</h3>
+
+  <!-- Tabela para exibir detalhes do pedido -->
+  <table class="table">
+    <tbody>
+      <!-- Subtotal -->
+      <tr>
+        <td>Subtotal:</td>
+        <td>{{ basketTotal.subtotal | currency:"BRL" }}</td>
+      </tr>
+      <!-- Frete -->
+      <tr>
+        <td>Frete:</td>
+        <td>{{ basketTotal.shipping | currency:"BRL" }}</td>
+      </tr>
+      <!-- Total -->
+      <tr class="table-success">
+        <td>Total:</td>
+        <td>{{ basketTotal.total | currency:"BRL" }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
